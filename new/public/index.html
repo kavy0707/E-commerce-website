@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofás</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 1rem;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      padding: 20px;
+    }
+
+    .sidebar {
+      width: 250px;
+      padding: 1rem;
+      border-right: 1px solid #ccc;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .filter-section {
+      margin-bottom: 1rem;
+    }
+
+    .products {
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .categories {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .categories div {
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .sort-bar {
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      width: 30%;
+    }
+
+    .product img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sofás</h1>
+    <select id="sort-options">
+      <option value="default">Ordenar por</option>
+      <option value="az">A to Z</option>
+      <option value="lowhigh">Price low to high</option>
+      <option value="highlow">Price high to low</option>
+    </select>
+  </header>
+  <div class="container">
+    <aside class="sidebar">
+      <h3>Filtros</h3>
+      <div class="filter-section">Orientación +</div>
+      <div class="filter-section">Plazas +</div>
+      <div class="filter-section">Material +</div>
+      <div class="filter-section">Tapiz +</div>
+      <div class="filter-section">Tamaño +</div>
+      <div class="filter-section">Color +</div>
+      <div class="filter-section">Precio +</div>
+    </aside>
+    <main class="products">
+      <div class="product-list" id="product-list">
+        <!-- JS will populate products here -->
+      </div>
+    </main>
+  </div>
+  <script src="js/filters.js"></script>
+</body>
+</html>

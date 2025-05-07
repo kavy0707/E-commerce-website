@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Abel|Abril+Fatface|Alegreya|Arima+Madurai|Dancing+Script|Dosis|Merriweather|Oleo+Script|Overlock|PT+Serif|Pacifico|Playball|Playfair+Display|Share|Unica+One|Vibur');
+
+  /* End Fonts */
+  /* Start Global rules */
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .overlay {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    font-family: 'Vibur', cursive;
+
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+  }
+
+
+  /* End body rules */
+
+  /* Start form  attributes */
+  #signupForm {
+    width: 450px;
+    min-height: 500px;
+    height: auto;
+    border-radius: 5px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-228deg, #E3FDF5 50%, #FFE6FA 50%);
+  }
+
+  /* form Container */
+  #signupForm .con {
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    margin: 0 auto;
+  }
+
+  /* the header form form */
+  .head-form {
+    height: 135px;
+    background: linear-gradient(to right, #ffe3e3, #fff);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ccc;
+    padding: 0;
+    margin-bottom: 46px;
+    width: 267px;
+    text-align: center;
+  }
+
+  /* Login title form form */
+  header h2 {
+    font-size: 250%;
+    font-family: 'Playfair Display', serif;
+    color: #3e403f;
+  }
+
+  /*  A welcome message or an explanation of the login form */
+  header p {
+    letter-spacing: 0.05em;
+    margin-bottom: 7rem;
+  }
+
+
+  .input-item {
+    background: #fff;
+    color: #333;
+    padding: 14.5px 0px 15px 9px;
+    border-radius: 5px 0px 0px 5px;
+  }
+
+
+
+  /* Show/hide password Font Icon */
+
+
+  /* inputs form  */
+  input[class="formInput"] {
+    width: 251px;
+    height: 50px;
+
+    margin-top: 2%;
+    padding: 15px;
+
+    font-size: 16px;
+    font-family: 'Abel', sans-serif;
+    color: #5E6472;
+
+    outline: none;
+    border: none;
+
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.2s linear;
+    margin-left: 58px;
+
+  }
+
+  input[id="txt-input"] {
+    width: 250px;
+  }
+
+  /* focus  */
+  input:focus {
+    transform: translateX(-2px);
+    border-radius: 5px;
+  }
+
+  .other {
+    display: flex;
+  }
+
+  #btn-submits {
+    display: inline-block;
+    color: #252537;
+
+    width: 264px;
+    height: 50px;
+
+    padding: 0 20px;
+    background: #B8F2E6;
+    border-radius: 5px;
+
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s linear;
+
+    margin: 7% auto;
+    letter-spacing: 0.05em;
+  }
+
+  #login {
+    display: inline-block;
+    color: #252537;
+    width: 264px;
+    height: 50px;
+    padding: 0 20px;
+    background: #B8F2E6;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2slinear;
+    margin: 8% 53px;
+    letter-spacing: 0.05em;
+  }
+
+
+
+  button:hover {
+    transform: translatey(3px);
+    box-shadow: none;
+  }
+
+  button:hover {
+    animation: ani9 0.4s ease-in-out infinite alternate;
+  }
+
+  @keyframes ani9 {
+    0% {
+      transform: translateY(3px);
+    }
+
+    100% {
+      transform: translateY(5px);
+    }
+  }
+</style>
+
+<body>
+  <form id="signupForm" onSubmit={handleclick}>
+    <div className="con">
+
+      <header className="head-form">
+        <h2>Log In</h2>
+        <p>login here using your username and password</p>
+      </header>
+
+      <div className="field-set">
+        <input type="text" name="username" placeholder="Username" class="formInput" /><br />
+        <input type="password" name="password" placeholder="Password" class="formInput" required /><br />
+        <button className="log-in" id='login' type="submit"> Log In </button>
+      </div>
+
+    </div>
+  </form>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const response = await fetch('/auth/login', {
+        method: 'POST',
+        body: new URLSearchParams(form)
+      });
+      if (response.ok) {
+        window.location.href = '/admin/dashboard.html';
+      } else {
+        alert('Invalid credentials');
+      }
+    });
+  </script>
+</body>
+
+</html>
